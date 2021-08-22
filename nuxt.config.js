@@ -20,14 +20,21 @@ export default {
   },
   router: {
     extendRoutes(routes, resolve) {
-      let getRoutePath = resolve(process.cwd(), 'tools/getRoutes.js')
-      if (fs.existsSync(resolve(process.cwd(), 'node_modules', 'yuki-multi-nuxt', 'tools/getRoutes.js'))) {
-        getRoutePath = resolve(process.cwd(), 'node_modules', 'yuki-multi-nuxt', 'tools/getRoutes.js')
+      console.log(2222)
+      if(process.env.isMulti) {
+        const getRoute = require(resolve(process.cwd(), 'tools/getRoutes.js'))
+        getRoute().forEach(c => {
+          routes.push(c)
+        })
+      } else {
+        routes.push(...require(path.resolve(process.cwd(), 'routes.js')))
       }
-      const getRoute = require(getRoutePath)
-      getRoute().forEach(c => {
-        routes.push(c)
-      })
+      // let getRoutePath = resolve(process.cwd(), 'tools/getRoutes.js')
+      // if (fs.existsSync(resolve(process.cwd(), 'node_modules', 'yuki-multi-nuxt', 'tools/getRoutes.js'))) {
+      //   getRoutePath = resolve(process.cwd(), 'node_modules', 'yuki-multi-nuxt', 'tools/getRoutes.js')
+      // }
+      // const getRoute = require(getRoutePath)
+     
     }
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)

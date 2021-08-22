@@ -3,7 +3,7 @@ const {resolve} = require('path');
 module.exports = [
     {
         name: 'index',
-        path: '/a',
+        path: '/main',
         component: resolve(__dirname, 'src/pages/index.vue')
     }
 ]

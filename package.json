@@ -15,6 +15,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "multiDev": "cross-env isMulti=true nuxt",
+    "multiBuild": "cross-env isMulti=true nuxt build",
     "generate": "nuxt generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +24,7 @@
   "license": "ISC",
   "dependencies": {
     "@nuxtjs/proxy": "^2.1.0",
+    "cross-env": "^7.0.3",
     "fs": "^0.0.1-security",
     "test-multi-nuxt": "^1.8.0",
     "yuki-nuxt-axios-api": "^1.0.0"
